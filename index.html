@@ -5,74 +5,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Civilization Trivia</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Diplomata+SC" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 </head>
 
 <body>
-
-<div class = "container" id="title-head">
-    <div class = "jumbotron">
-        <p class = "h1 text-center">Civilization</p>
-        <p class = "h2 text-center">Trivia Game</p>
+    <div class="container" id="title-head">
+        <div class = "jumbotron">
+            <p class = "h1 text-center">Trivia Game</p>
+        </div>
     </div>
-</div>
-
-<div class = "container">
-    <div class = "well" id = "game-field">
-
-        <div class = "row" id = "start-well">
-
-            <div id = "intro" class = "h2 col-lg-8 col-lg-push-2 text-center">A game about the people who have impacted and shaped great civiliztions past and present.</div>
-
-            <hr>
-
-            <div id = "start">
-                <p><span id="start-button" class = "btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">click to start game</span></p>
+    <div class="container">
+        <div class="well" id="game-field">
+            <div class="row" id="start-well">
+                <div id="intro" class="h2 col-lg-8 col-lg-push-2 text-center">A game about the people who have impacted and shaped great civiliztions past and present.</div>
+                <hr>
+                <div id="start">
+                    <p><span id="start-button" class="btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">click to start game</span></p>
+                </div>
             </div>
-
-        </div><!--/start-well-->
-
-        <div class = "row" id = "question-well">
-
-            <div id = "timer" class = "col-xs-12 col-sm-6 col-md-2 col-lg-2 text-center panel">00:60</div>
-
-            <div id = "question" class = "h2 col-xs-12 col-sm-9 col-sm-offset-1 col-md-9 col-md-offset-0 col-lg-9 col-lg-offset-1">Do you want to play Civilization Trivia?</div>
-
-            <div id = "answers">
-                <p><span class = "answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id = "0" data-answer = "0">Test id 0 data-answer 0</span></p>
-                <p><span class = "answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id = "1" data-answer = "1">Test id 1 data-answer 1 </span></p>
-                <p><span class = "answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id = "2" data-answer = "2">Test id 2 data-answer 2</span></p>
-                <p><span class = "answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id = "3" data-answer = "3">Test id 3 data-answer 3</span></p>
+            <!--/start-well-->
+            <div class="row" id="question-well">
+                <div id="timer" class="col-xs-12 col-sm-6 col-md-2 col-lg-2 text-center panel">00:60</div>
+                <div id="question" class="h2 col-lg-8 col-lg-push-2 text-center">Do you want to play Civilization Trivia?</div>
+                <div id="answers">
+                    <p><span class="answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id="0" data-answer="0">Test id 0 data-answer 0</span></p>
+                    <p><span class="answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id="1" data-answer="1">Test id 1 data-answer 1 </span></p>
+                    <p><span class="answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id="2" data-answer="2">Test id 2 data-answer 2</span></p>
+                    <p><span class="answer btn btn-primary btn-xl col-lg-8 col-lg-push-2" id="3" data-answer="3">Test id 3 data-answer 3</span></p>
+                </div>
             </div>
-
-        </div><!--/question-well-->
-
-        <div class = "row" id = "answer-well">
-
-            <div id = "answer" class = "h2 col-lg-8 col-lg-push-2"></div>
-
-            <div id = "answer-img"></div>
-            <div id = "answer-quote"></div>
-
-        </div><!--/answer-well-->
-
-        <div class = "row" id = "score-well">
-
-            <div id = "score-correct" class = "h2 col-lg-8 col-lg-push-2"></div>
-            <div id = "score-incorrect" class = "h2 col-lg-8 col-lg-push-2"></div>
-            <div id = "score-unanswered" class = "h2 col-lg-8 col-lg-push-2"></div>
-            <div id = "score-grade" class = "h2 col-lg-8 col-lg-push-2"></div>
-            <p><span id="reset" class = "btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">Play Again?</span></p>
-
-
-        </div><!--/score-well-->
-
-    </div><!--/game-field-->
-</div><!--/container-->
-
-
+            <!--/question-well-->
+            <div class="row" id="answer-well">
+                <div id="answer" class="h2 col-lg-8 col-lg-push-2"></div>
+                <div id="answer-img"></div>
+                <div id="answer-quote"></div>
+            </div>
+            <!--/answer-well-->
+            <div class="row" id="score-well">
+                <div id="score-correct" class="h2 col-lg-8 col-lg-push-2"></div>
+                <div id="score-incorrect" class="h2 col-lg-8 col-lg-push-2"></div>
+                <div id="score-unanswered" class="h2 col-lg-8 col-lg-push-2"></div>
+                <div id="score-grade" class="h2 col-lg-8 col-lg-push-2"></div>
+                <p><span id="reset" class="btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">Play Again?</span></p>
+            </div>
+            <!--/score-well-->
+        </div>
+        <!--/game-field-->
+    </div>
+    <!--/container-->
     <footer class="footer">
         <div>
             <h4>&#169; Copyright 2017 Jason O'Brien</h4>

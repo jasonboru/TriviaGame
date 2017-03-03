@@ -208,7 +208,7 @@ var questions = [
         sound: "../assets/sounds/mcluhan.mp3",
         quote: "<p>\"The new electronic interdependence recreates the world in the image of a global village.\"</p> <h2>-Marshall McLuhan</h2>",
         img: "assets/images/mcluhan.jpg"
-    }
+    },
 
     {
         ques: "A pillar of both the Irish and British literary establishments, he helped to found the Abbey Theatre, and in his later years served as an Irish Senator for two terms.",
@@ -216,7 +216,7 @@ var questions = [
         sound: "../assets/sounds/yeats.mp3",
         quote: "<p>\"Do not wait to strike 'til the iron is hot; but make it hot by striking.\"</p> <h2>-W. B. Yeats</h2>",
         img: "assets/images/yeats.jpg"
-    }
+    },
 
     {
         ques: "A senior officer of the United States Army who commanded the U.S. Seventh Army in the Mediterranean and European theaters of World War II, but is best known for his leadership of the U.S. Third Army in France and Germany.",
@@ -232,7 +232,7 @@ var questions = [
         sound: "../assets/sounds/schwartz.mp3",
         quote: "<p>\"The impact of nanotechnology is expected to exceed the impact the electronics revolution has had on our lives.\"</p> <h2>-Richard Schwartz</h2>",
         img: "assets/images/schwartz.jpg"
-    }
+    },
 
     {
         ques: "A controversial figure in Ancient Athens this philosopher was charged with corrupting the youth of the City-State and executed.",
@@ -241,7 +241,52 @@ var questions = [
         quote: "<p>\"There is only one good, knowledge, and one evil, ignorance.\"</p> <h2>-Socrates</h2>",
         img: "assets/images/socrates.jpg"
     }
-]
+]; //close questions array of objects
+
+//create at least four different sections in html that js can toggle between. start, questions, answers & score.
+
+var gameActive = false;
+
+$("#start-button").click(function() {
+    
+    gameActive=true;
+    $("#start-well").fadeOut("fast"); //clicking the Start button should fade away the start section and fade in the questions section.
+    $("#question-well").fadeIn("slow");
+    
+})
+
+function getQuestions() {
+    gameQues = questions.slice(0); //copy the questions into a new array
+    for ( var i = questions.length -1; i > 0; i--) { //this algorithm (Fisher-Yates shuffle) should jumble up the order of the copied array
+        //get a random question
+        var getIndex = Math.floor(Math.random() * (i + 1));
+        var displayQues = gameQues[getIndex];
+        //push to selected
+        gameQues[getIndex] = gameQues[i];
+        //remove from copied questions
+        gameQues[i] = displayQues;
+    }
+    console.log(gameQues);
+}
+
+getQuestions();
+
 
     
-});
+}); //close doc ready
+
+//On document ready the start section should display and the other sections should be hidden.
+
+//The game start Section will have a brief description and a start button.
+
+//clicking the Start button should fade away the start section and fade in the questions section. It should run a function that grabs 10 random questions and stores them in a new array. 
+    //And when in the question section a timer should start counting down until an answer is chosen.
+
+//when an answer is clicked the question section should fade out and the answer section should fade in. The Timer should pause.
+
+    //If the answer is correct give the user a message 'correct' show image, quote and play audio.
+    //else if the answer is wrong give message 'incorrect'
+
+//Set a time delay and then fade away answer section and fade in question section again for second question. repeat process for 10 questions.  
+
+
