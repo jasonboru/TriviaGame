@@ -1,5 +1,39 @@
+var gameActive = false;
+var correctAnswer = false;
+var rightAnsw = 0;
+var wrongAnsw = 0;
+var gameOver = false;
+var gameQues = [];
 
 $(document).ready(function() {
+
+    getQuestions();
+    // click function for answers
+    $(".answer").click(function() { 
+        if (gameActive) {
+            qlist.gradeAnswer($(this).data("answer"));
+        } else {
+            qlist.gameOn();
+        }
+    });
+    //shows after each question
+    $("#next-question").click(qlist.gameOn);
+
+    //only shows after all questions answered
+    $("#reset").click(reset);
+});
+
+function reset() {
+    gameActive = false,
+    correctAnswer = false,
+    gameOver = false,
+    qlist.qnum = 10,
+    rightAnsw = 0,
+    wrongAnsw = 0,
+    gameQues = [];
+    getQuestions();
+    qlist.gameOn();
+}
 
 var questions = [
     {
@@ -256,7 +290,7 @@ var questions = [
 
     {
         ques: "An American mathematician notable for his contributions to geometric group theory and to an area of mathematics known as billiards.",
-        answ: ["Richard Schwartz", "Joseph B. Keller", "Serge Tabachnikov", "Jacques Hadamard"].
+        answ: ["Richard Schwartz", "Joseph B. Keller", "Serge Tabachnikov", "Jacques Hadamard"],
         answIndex: [0], 
         sound: "../assets/sounds/schwartz.mp3",
         quote: "<p>\"The impact of nanotechnology is expected to exceed the impact the electronics revolution has had on our lives.\"</p> <h2>-Richard Schwartz</h2>",
@@ -274,8 +308,6 @@ var questions = [
 ]; //close questions array of objects
 
 //create at least four different sections in html that js can toggle between. start, questions, answers & score.
-
-var gameActive = false;
 
 $("#start-button").click(function() {
     
@@ -301,9 +333,98 @@ function getQuestions() {
 
 getQuestions();
 
+var qlist = {
+
+    qnum: 10,
+
+    gameOn : function() {
+        // run gameOver when out of questions
+        if (qlist.qnum === 0) {
+
+            qlist.gameOver();
+
+        } else {
+            //hide results and end-game and display quiz
+            $("#answer-well").css("display", "none");
+            $("#next-question").css("display", "none");
+            $("#score-well").css("display", "none");
+            $("#question-well").css("display", "inherit");
+
+            gameStart = true; //flag .choice click function to stay in quiz
+            // gameClock.reset(); //reset clock to 30 sec
+            $("#timer").css("display", "inherit"); //display clock
+            qlist.showQuestion(); 
+        }
+    },
+    // display questions, one at a time
+    showQuestion: function() {
+        
+        qlist.qnum--;
+        //update display
+        $("#question").text(gameQues[qlist.qnum].ques);
+        $("#0").text(gameQues[qlist.qnum].answ[0]);
+        $("#1").text(gameQues[qlist.qnum].answ[1]);
+        $("#2").text(gameQues[qlist.qnum].answ[2]);
+        $("#3").text(gameQues[qlist.qnum].answ[3]);
+    },
+    // display animation based on correct/incorrect answer
+    gradeAnswer: function(data) {
+
+        if (parseInt(data) === gameQues[qlist.qnum].answIndex) {
+            correctAnswer = true;
+            rightAnsw++;
+            $("#answer-img").html("<img src='" 
+                                    + gameQues[list.qnum].img);
+
+            $("#answer-quote").html(gameQues[list.qnum].quote);
+            var audioQuote = document.createElement("audio");
+            audioQuote.setAttribute("src", gameQues[list.qnum].sound);
+            audioQuote.play();
+
+        } else {
+            correctAnswer = false;
+            wrongAnsw++;
+            $("#answer-img").html("<img src='"
+                                    + gameQues[qlist.qnum].img);
+
+            $("#answer-quote").html("Incorrect!<br>It was: "
+                                    + gameQues[qlist.qnum].answ
+                                    [gameQues[qlist.qnum].answIndex]);
+        }
+        $("#question-well").css("display", "none");
+        $("#answer-well").css("display", "inherit");
+        setTimeout(function(){ $("#next-question").css("display", "inherit");}, 2000);
+    },
+
+    gameOver: function() {  
+        //hide results and show end-game scenario
+        $("#question-well").css("display", "none");       
+        $("#answer-well").css("display", "none");
+        $("#next-question").css("display", "none");
+        $("#score-well").css("display", "inherit");
+
+        $("#score-correct").text(rightAnsw);
+        $("#score-incorrect").text(wrongAnsw);
+        var unanswered;
+        if ((rightAnsw + wrongAnsw) === 10) {
+            unanswered = "None!";
+        } else {
+            unanswered = 10 - rightAnsw + wrongAnsw;
+        }
+        $("#score-unanswered").text(unanswered);
+        $("#score-grade").text(Math.round((rightAnsw/10)*100) + "%");
+        //show play again button
+        setTimeout(function(){ $("#reset").css("display", "inherit");}, 3000);
+        
+
+
+    }
+
+}
+
 
     
-}); //close doc ready
+
 
 //On document ready the start section should display and the other sections should be hidden.
 
