@@ -1,4 +1,4 @@
-//define variables
+//define variables 
 var gameActive = false;
 var correctAnswer = false;
 var timeUp = false;
@@ -364,7 +364,8 @@ var timerClock = {
 
     reset: function() {
         timerClock.clockInt = 105;
-        $("#timer").text(timerClock.timeConverter(timerClock.time));
+        //$("#timer").text(timerClock.timeConverter(timerClock.time));
+        $("#timer").text("01:45"); //reset display to 1:45 keeps it from flashing NaN
     },
 
     begin: function() {
@@ -458,6 +459,7 @@ var qlist = { //set up variables and functions for new question list as an objec
             var audioQuote = document.createElement("audio"); //adds an audio element
             audioQuote.setAttribute("src", gameQues[qlist.qnum].sound); //picks the file path to the mp3 of the current answer subjects quote
             audioQuote.play(); //plays the audio clip
+            if ()
 
         } else {
             correctAnswer = false;
