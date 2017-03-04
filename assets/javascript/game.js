@@ -1,6 +1,7 @@
 //define variables
 var gameActive = false;
 var correctAnswer = false;
+var timeUp = false;
 var rightAnsw = 0;
 var wrongAnsw = 0;
 var gameOver = false;
@@ -15,7 +16,8 @@ $(document).ready(function() {
     getQuestions();
     // if user clicks an answer run gradeAnswer function
     $(".answer").click(function() {       
-            qlist.gradeAnswer($(this).data("answer")); //runs gradeAnswer function against the data value of the button the user clicked.       
+            qlist.gradeAnswer($(this).data("answer")); //runs gradeAnswer function against the data value of the button the user clicked.
+            timerClock.stop();       
     });
 
     //progress to the next question when user clicks next-question button
@@ -27,12 +29,13 @@ $(document).ready(function() {
 
 function reset() {  //reset function resets the variable to their defaults.
     gameActive = false,
-        correctAnswer = false,
-        gameOver = false,
-        qlist.qnum = 10,
-        rightAnsw = 0,
-        wrongAnsw = 0,
-        gameQues = [];
+    correctAnswer = false,
+    gameOver = false,
+    qlist.qnum = 10,
+    rightAnsw = 0,
+    wrongAnsw = 0,
+    gameQues = [];
+    timerClock.reset();
     getQuestions(); //then runs getQuestions function to get a new set of 10 questions
     qlist.gameOn(); //then runs gameOn function starting a new round.
 }
@@ -159,7 +162,7 @@ var questions = [{
     },
 
     {
-        ques: "For proving that the Sun, not the Earth, was the center of our solar system this astronomer was sentence to house arrest for the remainder of his life.",
+        ques: "For proving that the Sun, not the Earth, was the center of our solar system this astronomer was sentenced to house arrest for the remainder of his life.",
         answ: ["Galileo", "Johannes Engel", "Nicolaus Copernicus", "Johannes Kepler"],
         answIndex: 0,
         sound: "assets/sounds/galileo.mp3",
@@ -355,6 +358,56 @@ function getQuestions() { //create a copy of the questions array that can then b
 
 }
 
+var timerClock = {
+
+    clockInt : 105,
+
+    reset: function() {
+        timerClock.clockInt = 105;
+        $("#timer").text(timerClock.timeConverter(timerClock.time));
+    },
+
+    begin: function() {
+        cycle = setInterval(timerClock.run, 1000);
+    },
+
+    stop: function() {
+        clearInterval(cycle);
+    },
+
+    run: function() {
+        if (timerClock.clockInt === 0) {
+            timeUp = true;
+            timerClock.stop();
+            qlist.gameOver();
+        } else {
+            timerClock.clockInt--;
+            var runningTime = timerClock.timeConverter(timerClock.clockInt);
+            $("#timer").text(runningTime);
+        }
+    },
+
+    timeConverter: function(t) {
+        //  Takes the current time in seconds and convert it to minutes and seconds (mm:ss).
+        var minutes = Math.floor(t / 60);
+        var seconds = t - (minutes * 60);
+        // allows game time to be altered in the future to more than one minute
+        if (seconds < 10) {
+          seconds = "0" + seconds;
+        }
+
+        if (minutes === 0) {
+          minutes = "00";
+        }
+
+        else if (minutes < 10) {
+          minutes = "0" + minutes;
+        }
+
+        return minutes + ":" + seconds;
+    }
+}
+
 getQuestions(); // call the getQuestions function
 
 var qlist = { //set up variables and functions for new question list as an object
@@ -377,6 +430,7 @@ var qlist = { //set up variables and functions for new question list as an objec
             gameActive = true; 
 
             $("#timer").css("display", "inherit"); //show the timer during the question
+            timerClock.begin();
             qlist.showQuestion(); //call the showQuestion function to populate a new question to display
         }
     },

@@ -15,6 +15,12 @@ h3 {
     font-family: 'Diplomata SC', cursive;
 }
 
+hr {
+    max-width: 50px;
+    border-color: #f05f40;
+    border-width: 3px;
+}
+
 .jumbotron {
     background-color: #ddd;
     background: url(../images/bkgds/civ_logo.png) no-repeat;
