@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Civilization Trivia</title>
-    <link href="https://fonts.googleapis.com/css?family=Comfortaa" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Diplomata+SC" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Diplomata|Diplomata+SC" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://code.jquery.com/jquery-3.1.1.js"></script>
@@ -22,7 +22,6 @@
         <div class="well" id="game-field">
             <div class="row" id="start-well">
                 <div id="intro" class="h2 col-lg-8 col-lg-push-2 text-center">A game about the people who have impacted and shaped great civiliztions past and present.</div>
-                <hr>
                 <div id="start">
                     <p><span id="start-button" class="btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">click to start game</span></p>
                 </div>
@@ -43,15 +42,23 @@
                 <div id="answer" class="h2 col-lg-8 col-lg-push-2"></div>
                 <div id="answer-img"></div>
                 <div id="answer-quote"></div>
-                <button class = "btn btn-primary btn-block" id = "next-question">Next Question</button>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-push-2">
+                            <button class = "btn btn-primary btn-block" id = "next-question">Next Question</button>
+                        </div>
+                    </div>
             </div>
             <!--/answer-well-->
             <div class="row" id="score-well">
-                <div id="score-correct" class="h2 col-lg-8 col-lg-push-2"></div>
-                <div id="score-incorrect" class="h2 col-lg-8 col-lg-push-2"></div>
-                <div id="score-unanswered" class="h2 col-lg-8 col-lg-push-2"></div>
-                <div id="score-grade" class="h2 col-lg-8 col-lg-push-2"></div>
-                <p><span id="reset" class="btn btn-primary btn-xl col-lg-8 col-lg-push-2 text-center">Play Again?</span></p>
+                <div class="h2 col-lg-8 col-lg-push-2">Answers you got right: <span id="score-correct"></span></div>
+                <div class="h2 col-lg-8 col-lg-push-2">Answers you got wrong: <span id="score-incorrect"></span></div>
+                <div class="h2 col-lg-8 col-lg-push-2">Questions you did not answer: <span id="score-incorrect"></span></div>
+                <div class="h2 col-lg-8 col-lg-push-2">Your Trivia Grade: <span id="score-grade"></span></div>
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-push-2">
+                            <button id="reset" class="btn btn-primary btn-block">Play Again?</button>
+                        </div>
+                    </div>
             </div>
             <!--/score-well-->
         </div>

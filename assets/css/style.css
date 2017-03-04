@@ -5,9 +5,14 @@ html {
 body {
     background: url(../images/bkgds/civ-background-03.jpg);
     background-size: cover;
-    font-family: 'Comfortaa', cursive;
     color: #333;
     margin-bottom: 8.5em;
+}
+
+h3 {
+    font-size: 250%;
+    color: #f05f40;
+    font-family: 'Diplomata SC', cursive;
 }
 
 .jumbotron {
@@ -26,6 +31,13 @@ body {
 .btn {
     display: block;
     background-color: #f05f40;
+    border-radius: 300px;
+    border: 1px solid #f05f40;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #000;
 }
 
 #start-button {
@@ -34,6 +46,10 @@ body {
 
 .answer {
     margin: 20px auto;
+}
+
+.img-circle {
+    border: 3px solid #f05f40;
 }
 
 #question-well, #answer-well, #score-well {
