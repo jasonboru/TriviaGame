@@ -506,7 +506,7 @@ var qlist = { //set up variables and functions for new question list as an objec
             rightAnsw++; //add to the correct answers score
             $("#answer-img").html("<img class='img-circle img-responsive center-block' src=" + gameQues[qlist.qnum].img + ">"); //shows a portrait image of the answer subject
 
-            $("#answer-quote").html("<h2 class='text-center'>" + gameQues[qlist.qnum].quote + "</h2>"); //shows text of the answer subjects famous quote
+            $("#answer-quote").html("<h2 id='displayQuote' class='text-center'>" + gameQues[qlist.qnum].quote + "</h2>"); //shows text of the answer subjects famous quote
             var audioQuote = document.createElement("audio"); //adds an audio element
             audioQuote.setAttribute("src", gameQues[qlist.qnum].sound); //picks the file path to the mp3 of the current answer subjects quote
             audioQuote.play(); //plays the audio clip
