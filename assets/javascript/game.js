@@ -15,9 +15,9 @@ $(document).ready(function() {
 
     getQuestions();
     // if user clicks an answer run gradeAnswer function
-    $(".answer").click(function() {       
-            qlist.gradeAnswer($(this).data("answer")); //runs gradeAnswer function against the data value of the button the user clicked.
-            timerClock.stop();       
+    $(".answer").click(function() {
+        qlist.gradeAnswer($(this).data("answer")); //runs gradeAnswer function against the data value of the button the user clicked.
+        timerClock.stop();
     });
 
     //progress to the next question when user clicks next-question button
@@ -27,14 +27,14 @@ $(document).ready(function() {
     $("#reset").click(reset);
 });
 
-function reset() {  //reset function resets the variable to their defaults.
+function reset() { //reset function resets the variable to their defaults.
     gameActive = false,
-    correctAnswer = false,
-    gameOver = false,
-    qlist.qnum = 10,
-    rightAnsw = 0,
-    wrongAnsw = 0,
-    gameQues = [];
+        correctAnswer = false,
+        gameOver = false,
+        qlist.qnum = 10,
+        rightAnsw = 0,
+        wrongAnsw = 0,
+        gameQues = [];
     timerClock.reset();
     getQuestions(); //then runs getQuestions function to get a new set of 10 questions
     qlist.gameOn(); //then runs gameOn function starting a new round.
@@ -410,9 +410,9 @@ function getQuestions() { //create a copy of the questions array that can then b
 
 var timerClock = {
 
-    tick: new Audio ("https://s3.amazonaws.com/job-ucf-code-bootcamp/civ-trivia-sounds/tick.wav"),
+    tick: new Audio("https://s3.amazonaws.com/job-ucf-code-bootcamp/civ-trivia-sounds/tick.wav"),
 
-    clockInt : 105,
+    clockInt: 105,
 
     reset: function() {
         timerClock.clockInt = 105;
@@ -447,15 +447,13 @@ var timerClock = {
         var seconds = t - (minutes * 60);
         // allows game time to be altered in the future to more than one minute
         if (seconds < 10) {
-          seconds = "0" + seconds;
+            seconds = "0" + seconds;
         }
 
         if (minutes === 0) {
-          minutes = "00";
-        }
-
-        else if (minutes < 10) {
-          minutes = "0" + minutes;
+            minutes = "00";
+        } else if (minutes < 10) {
+            minutes = "0" + minutes;
         }
 
         return minutes + ":" + seconds;
@@ -481,7 +479,7 @@ var qlist = { //set up variables and functions for new question list as an objec
             $("#score-well").css("display", "none"); // hide the score screen
             $("#question-well").css("display", "inherit"); // show the question screen
 
-            gameActive = true; 
+            gameActive = true;
 
             $("#timer").css("display", "inherit"); //show the timer during the question
             timerClock.begin();
@@ -537,12 +535,12 @@ var qlist = { //set up variables and functions for new question list as an objec
         $("#score-correct").text(rightAnsw); //print the # of correct answers to the DOM
         $("#score-incorrect").text(wrongAnsw); //print the # of incorrect answers to the DOM
         var unanswered;
-        if ((rightAnsw + wrongAnsw) === 10) { 
+        if ((rightAnsw + wrongAnsw) === 10) {
             unanswered = "None!";
         } else {
             unanswered = 10 - rightAnsw + wrongAnsw; // calculate the # of unanswered questions
         }
-        $("#score-unanswered").text(unanswered);  //print the # of unanswered questions to the DOM
+        $("#score-unanswered").text(unanswered); //print the # of unanswered questions to the DOM
         $("#score-grade").text(Math.round((rightAnsw / 10) * 100) + "%"); //calculate & print the precentage grade to the DOM       
         setTimeout(function() { $("#reset").css("display", "inherit"); }, 3000); //show reset button after 3 seconds
     }

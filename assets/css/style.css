@@ -1,8 +1,13 @@
 html {
-    min-height: 100%;
+    height: 100%;
+}
+
+html {
     position: relative;
 }
+
 body {
+    min-height: 100%;
     background: url(../images/bkgds/civ-background-03.jpg);
     font-family: 'Georgia';
     background-size: cover;
@@ -13,7 +18,6 @@ body {
 h1 {
     font-family: 'Georgia';
     font-weight: 700;
-
 }
 
 h3 {
@@ -42,11 +46,12 @@ hr {
 }
 
 #answer-well {
-    padding-bottom: 40px;
+    padding-top: 40px;
 }
 
 #next-question {
     position: absolute;
+    top: -20px;
 }
 
 .btn {
@@ -80,7 +85,9 @@ hr {
     border: 3px solid #f05f40;
 }
 
-#question-well, #answer-well, #score-well {
+#question-well,
+#answer-well,
+#score-well {
     display: none;
 }
 
@@ -90,7 +97,6 @@ hr {
 }
 
 #timer {
-    
     position: absolute;
     top: -1.25em;
     left: 40%;
