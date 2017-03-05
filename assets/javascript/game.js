@@ -512,8 +512,6 @@ var qlist = { //set up variables and functions for new question list as an objec
             var audioQuote = document.createElement("audio"); //adds an audio element
             audioQuote.setAttribute("src", gameQues[qlist.qnum].sound); //picks the file path to the mp3 of the current answer subjects quote
             audioQuote.play(); //plays the audio clip
-            if ()
-
         } else {
             correctAnswer = false;
             wrongAnsw++; //add to the incorrect answers score
