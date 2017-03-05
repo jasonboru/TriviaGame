@@ -4,9 +4,16 @@ html {
 }
 body {
     background: url(../images/bkgds/civ-background-03.jpg);
+    font-family: 'Georgia';
     background-size: cover;
     color: #333;
     margin-bottom: 8.5em;
+}
+
+h1 {
+    font-family: 'Georgia';
+    font-weight: 700;
+
 }
 
 h3 {
@@ -34,7 +41,17 @@ hr {
     background-color: rgba(245, 245, 245, 0.8);
 }
 
+#answer-well {
+    padding-bottom: 40px;
+}
+
+#next-question {
+    position: absolute;
+}
+
 .btn {
+    text-transform: uppercase;
+    font-weight: 700;
     display: block;
     background-color: #f05f40;
     border-radius: 300px;
@@ -43,7 +60,8 @@ hr {
 
 .btn:hover {
     background-color: #fff;
-    color: #000;
+    color: #f05f40;
+    border: 1px solid #f05f40;
 }
 
 #start-button {
@@ -51,7 +69,11 @@ hr {
 }
 
 .answer {
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
+}
+
+.last-answer {
+    margin-bottom: 20px;
 }
 
 .img-circle {
@@ -60,6 +82,11 @@ hr {
 
 #question-well, #answer-well, #score-well {
     display: none;
+}
+
+.diplomata {
+    font-family: 'Diplomata SC', cursive;
+    color: #f05f40;
 }
 
 #timer {
