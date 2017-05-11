@@ -10,7 +10,7 @@ var gameQues = [];
 $(document).ready(function() {
 
     $("#start-button").click(function() { //clicking the Start button should fade away the start section and fade in the questions section.
-        qlist.gameOn(); // run gameOn function 
+        qlist.gameOn(); // run gameOn function
     })
 
     getQuestions();
@@ -468,7 +468,7 @@ var qlist = { //set up variables and functions for new question list as an objec
 
     gameOn: function() { //gameOn function either brings on a new question or if none are left in the round moves to the score
 
-        if (qlist.qnum === 0) { //if there are no questions left 
+        if (qlist.qnum === 0) { //if there are no questions left
 
             qlist.gameOver(); // call gameOver function
 
@@ -510,6 +510,10 @@ var qlist = { //set up variables and functions for new question list as an objec
             var audioQuote = document.createElement("audio"); //adds an audio element
             audioQuote.setAttribute("src", gameQues[qlist.qnum].sound); //picks the file path to the mp3 of the current answer subjects quote
             audioQuote.play(); //plays the audio clip
+            //this will stop the audio clip when user clicks next question.
+            $("#next-question").click(function() {
+              audioQuote.pause();
+            });
         } else {
             correctAnswer = false;
             wrongAnsw++; //add to the incorrect answers score
@@ -519,6 +523,10 @@ var qlist = { //set up variables and functions for new question list as an objec
             var audioWrong = document.createElement("audio"); //adds an audio element
             audioWrong.setAttribute("src", "https://s3.amazonaws.com/job-ucf-code-bootcamp/civ-trivia-sounds/Loss2.mp3"); //grabs the loss mp3 for a wrong guess
             audioWrong.play(); //plays the audio clip
+            //this will stop the audio clip when user clicks next question.
+            $("#next-question").click(function() {
+              audioQuote.pause();
+            });
         }
         $("#question-well").css("display", "none"); // hides the question screen
         $("#answer-well").css("display", "inherit"); // shows the answer screen
@@ -541,7 +549,7 @@ var qlist = { //set up variables and functions for new question list as an objec
             unanswered = 10 - rightAnsw + wrongAnsw; // calculate the # of unanswered questions
         }
         $("#score-unanswered").text(unanswered); //print the # of unanswered questions to the DOM
-        $("#score-grade").text(Math.round((rightAnsw / 10) * 100) + "%"); //calculate & print the precentage grade to the DOM       
+        $("#score-grade").text(Math.round((rightAnsw / 10) * 100) + "%"); //calculate & print the precentage grade to the DOM
         setTimeout(function() { $("#reset").css("display", "inherit"); }, 3000); //show reset button after 3 seconds
     }
 
