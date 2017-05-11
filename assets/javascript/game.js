@@ -546,7 +546,7 @@ var qlist = { //set up variables and functions for new question list as an objec
         if ((rightAnsw + wrongAnsw) === 10) {
             unanswered = "None!";
         } else {
-            unanswered = 10 - (rightAnsw + wrongAnsw); // calculate the # of unanswered questions
+            unanswered = 10 - rightAnsw + wrongAnsw; // calculate the # of unanswered questions
         }
         $("#score-unanswered").text(unanswered); //print the # of unanswered questions to the DOM
         $("#score-grade").text(Math.round((rightAnsw / 10) * 100) + "%"); //calculate & print the precentage grade to the DOM
